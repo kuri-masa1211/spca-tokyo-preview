@@ -1,0 +1,30 @@
+{
+  "status": "sample",
+  "note": "デザイン確認用のサンプルロゴ。実在するスポンサー企業ではありません。",
+  "items": [
+    {
+      "name": "SAMPLE PET（サンプルロゴ）",
+      "src": "/spca-tokyo-preview/assets/sponsors/sample-pet.svg"
+    },
+    {
+      "name": "SAMPLE LIFE（サンプルロゴ）",
+      "src": "/spca-tokyo-preview/assets/sponsors/sample-life.svg"
+    },
+    {
+      "name": "SAMPLE CARE（サンプルロゴ）",
+      "src": "/spca-tokyo-preview/assets/sponsors/sample-care.svg"
+    },
+    {
+      "name": "SAMPLE FOODS（サンプルロゴ）",
+      "src": "/spca-tokyo-preview/assets/sponsors/sample-foods.svg"
+    },
+    {
+      "name": "SAMPLE WORKS（サンプルロゴ）",
+      "src": "/spca-tokyo-preview/assets/sponsors/sample-works.svg"
+    },
+    {
+      "name": "SAMPLE HOME（サンプルロゴ）",
+      "src": "/spca-tokyo-preview/assets/sponsors/sample-home.svg"
+    }
+  ]
+}
