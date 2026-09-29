@@ -1,3 +1,10 @@
+// Reveal each homepage block as it enters the viewport; content stays visible without JS.
+const revealItems=[...document.querySelectorAll('[data-reveal]')];
+if(revealItems.length&&window.matchMedia('(prefers-reduced-motion:no-preference)').matches&&'IntersectionObserver' in window){
+ document.documentElement.classList.add('js-motion');
+ const revealObserver=new IntersectionObserver((entries)=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}}},{threshold:.12,rootMargin:'0px 0px -25px 0px'});
+ revealItems.forEach(item=>revealObserver.observe(item));
+}else revealItems.forEach(item=>item.classList.add('is-visible'));
 const toggle=document.querySelector('.menu-toggle');
 const mobile=document.querySelector('.mobile-nav');
 function setMenu(open){toggle?.setAttribute('aria-expanded',String(open));if(mobile)mobile.hidden=!open;document.body.classList.toggle('menu-open',open);if(toggle)toggle.querySelector('small').textContent=open?'CLOSE':'MENU';}
@@ -17,15 +24,53 @@ document.querySelectorAll('[data-filter-group]').forEach(group=>{
 // Fit deliberately unbroken short display headings to their container, including narrow phones.
 function fitLines(){document.querySelectorAll('.line-word,[data-fit]').forEach(el=>{el.style.fontSize='';const base=parseFloat(getComputedStyle(el).fontSize);const room=el.parentElement.clientWidth;const range=document.createRange();range.selectNodeContents(el);const width=range.getBoundingClientRect().width;if(width>room)el.style.fontSize=`${Math.max(18,base*room/width*.98)}px`;});}
 document.fonts.ready.then(fitLines);window.addEventListener('resize',fitLines);
-// Retain the original site's three-image sequence and six-second changeover.
-const originalSlides=[...document.querySelectorAll('.original-fv-slide')];
+// Muted stock footage with explicit playback control and reduced-motion support.
 const reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)');
-let originalSlideIndex=0;
-if(originalSlides.length>1)setInterval(()=>{
- if(document.hidden||reduceMotion.matches)return;
- originalSlides[originalSlideIndex].classList.remove('is-current');
- originalSlides[originalSlideIndex].setAttribute('aria-hidden','true');
- originalSlideIndex=(originalSlideIndex+1)%originalSlides.length;
- originalSlides[originalSlideIndex].classList.add('is-current');
- originalSlides[originalSlideIndex].removeAttribute('aria-hidden');
-},6000);
+const heroVideo=document.querySelector('[data-hero-video]');
+const videoToggle=document.querySelector('[data-video-toggle]');
+if(heroVideo&&videoToggle){
+ let wantsPlayback=!reduceMotion.matches&&!navigator.connection?.saveData;
+ let inView=true;
+ heroVideo.muted=true;
+ heroVideo.controls=false;
+ videoToggle.hidden=false;
+ const reflectPlayback=()=>{
+  const playing=!heroVideo.paused;
+  videoToggle.setAttribute('aria-label',playing?'動画を一時停止':'動画を再生');
+  videoToggle.querySelector('[data-video-icon]').textContent=playing?'Ⅱ':'▶';
+  videoToggle.querySelector('[data-video-label]').textContent=playing?'一時停止':'再生';
+ };
+ const syncPlayback=()=>{
+  if(wantsPlayback&&inView&&!document.hidden)heroVideo.play().catch(()=>reflectPlayback());
+  else heroVideo.pause();
+ };
+ heroVideo.addEventListener('play',reflectPlayback);
+ heroVideo.addEventListener('pause',reflectPlayback);
+ heroVideo.addEventListener('error',()=>{videoToggle.hidden=true;});
+ videoToggle.addEventListener('click',()=>{wantsPlayback=heroVideo.paused;syncPlayback();});
+ document.addEventListener('visibilitychange',syncPlayback);
+ reduceMotion.addEventListener('change',()=>{wantsPlayback=!reduceMotion.matches&&!navigator.connection?.saveData;syncPlayback();});
+ new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;syncPlayback();},{threshold:0}).observe(heroVideo);
+ reflectPlayback();
+ syncPlayback();
+}
+
+// Advance the existing horizontal animal list while it is visible and not being used.
+document.querySelectorAll('[data-animal-carousel]').forEach(carousel=>{
+ const strip=carousel.querySelector('.legacy-animal-strip');
+ const track=carousel.querySelector('.legacy-animal-track');
+ let inView=false,hovered=false,resumeAt=0;
+ const advance=direction=>{
+  const step=track.firstElementChild.getBoundingClientRect().width+parseFloat(getComputedStyle(track).gap);
+  const end=strip.scrollWidth-strip.clientWidth;
+  const next=direction>0&&strip.scrollLeft>=end-2?0:direction<0&&strip.scrollLeft<=2?end:strip.scrollLeft+step*direction;
+  strip.scrollTo({left:next,behavior:reduceMotion.matches?'instant':'smooth'});
+ };
+ carousel.querySelector('[data-animal-prev]').addEventListener('click',()=>{resumeAt=Date.now()+12000;advance(-1);});
+ carousel.querySelector('[data-animal-next]').addEventListener('click',()=>{resumeAt=Date.now()+12000;advance(1);});
+ carousel.addEventListener('mouseenter',()=>{hovered=true;});
+ carousel.addEventListener('mouseleave',()=>{hovered=false;});
+ for(const event of ['touchstart','wheel','keydown'])strip.addEventListener(event,()=>{resumeAt=Date.now()+12000;},{passive:true});
+ new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;},{threshold:0}).observe(carousel);
+ setInterval(()=>{if(inView&&!hovered&&!document.hidden&&!reduceMotion.matches&&Date.now()>resumeAt&&!carousel.contains(document.activeElement))advance(1);},6000);
+});
