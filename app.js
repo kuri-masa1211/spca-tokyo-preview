@@ -24,34 +24,20 @@ document.querySelectorAll('[data-filter-group]').forEach(group=>{
 // Fit deliberately unbroken short display headings to their container, including narrow phones.
 function fitLines(){document.querySelectorAll('.line-word,[data-fit]').forEach(el=>{el.style.fontSize='';const base=parseFloat(getComputedStyle(el).fontSize);const room=el.parentElement.clientWidth;const range=document.createRange();range.selectNodeContents(el);const width=range.getBoundingClientRect().width;if(width>room)el.style.fontSize=`${Math.max(18,base*room/width*.98)}px`;});}
 document.fonts.ready.then(fitLines);window.addEventListener('resize',fitLines);
-// Muted stock footage with explicit playback control and reduced-motion support.
+// Muted background footage; pause it offscreen or when motion is reduced.
 const reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)');
 const heroVideo=document.querySelector('[data-hero-video]');
-const videoToggle=document.querySelector('[data-video-toggle]');
-if(heroVideo&&videoToggle){
- let wantsPlayback=!reduceMotion.matches&&!navigator.connection?.saveData;
+if(heroVideo){
  let inView=true;
  heroVideo.muted=true;
  heroVideo.controls=false;
- videoToggle.hidden=false;
- const reflectPlayback=()=>{
-  const playing=!heroVideo.paused;
-  videoToggle.setAttribute('aria-label',playing?'動画を一時停止':'動画を再生');
-  videoToggle.querySelector('[data-video-icon]').textContent=playing?'Ⅱ':'▶';
-  videoToggle.querySelector('[data-video-label]').textContent=playing?'一時停止':'再生';
- };
  const syncPlayback=()=>{
-  if(wantsPlayback&&inView&&!document.hidden)heroVideo.play().catch(()=>reflectPlayback());
+  if(!reduceMotion.matches&&!navigator.connection?.saveData&&inView&&!document.hidden)heroVideo.play().catch(()=>{});
   else heroVideo.pause();
  };
- heroVideo.addEventListener('play',reflectPlayback);
- heroVideo.addEventListener('pause',reflectPlayback);
- heroVideo.addEventListener('error',()=>{videoToggle.hidden=true;});
- videoToggle.addEventListener('click',()=>{wantsPlayback=heroVideo.paused;syncPlayback();});
  document.addEventListener('visibilitychange',syncPlayback);
- reduceMotion.addEventListener('change',()=>{wantsPlayback=!reduceMotion.matches&&!navigator.connection?.saveData;syncPlayback();});
+ reduceMotion.addEventListener('change',syncPlayback);
  new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;syncPlayback();},{threshold:0}).observe(heroVideo);
- reflectPlayback();
  syncPlayback();
 }
 

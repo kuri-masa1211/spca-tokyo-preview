@@ -66,8 +66,7 @@ html{scroll-padding-top:295px}
 @media(max-width:900px){.header-main{position:relative;justify-content:center}.site-header .menu-toggle{position:absolute;right:12px;top:0;bottom:0;width:44px}}
 
 /* 2026-09-29 supplied sketch: left logo, navigation, full-width film. */
-html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
-.sketch-layout{padding-bottom:78px}
+html:has(.sketch-layout){scroll-padding-top:24px}
 .sketch-header{position:relative;display:block;border-bottom:1px solid var(--line)}
 .sketch-header .header-main{display:flex;align-items:center;justify-content:flex-start;height:96px;padding:12px var(--gutter);border:0}
 .sketch-header .brand{padding:0;justify-content:flex-start}
@@ -79,10 +78,6 @@ html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
 .sketch-header .secondary-nav a:hover{background:var(--sky);text-decoration:none}
 .film-hero{height:clamp(390px,39vw,660px);position:relative;overflow:hidden;background:#e8e9e8}
 .film-hero-video{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 54%}
-.film-control{position:absolute;right:28px;bottom:24px;display:flex;align-items:center;justify-content:center;gap:12px;min-width:116px;min-height:44px;padding:9px 16px;border:1px solid #ffffffa0;background:#ffffffed;color:var(--navy);font-size:12px;line-height:1.5}
-.film-control[hidden]{display:none}
-.film-control:hover{background:white;color:var(--blue)}
-.film-control [data-video-icon]{font-size:15px;line-height:1}
 .sketch-layout .sponsor-strip{padding:20px 0 22px}
 .sketch-layout .sponsor-strip h2{margin-bottom:14px}
 .sketch-layout .legacy-home{background:white}
@@ -106,37 +101,22 @@ html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
 .animal-controls>div{display:flex;gap:10px}
 .animal-controls button{display:grid;place-items:center;width:44px;height:44px;background:#fff;border:1px solid var(--line);color:var(--blue);font-size:21px}
 .animal-controls button:hover{background:var(--sky)}
-.support-dock{position:fixed;left:0;right:0;bottom:0;z-index:35;display:flex;justify-content:space-between;align-items:stretch;height:78px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -3px 18px #12355308}
-.support-dock>p{align-self:center;padding:0 var(--gutter);font-size:13px;letter-spacing:.05em;color:var(--blue);white-space:nowrap}
-.support-dock nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:66%;max-width:1050px}
-.support-dock a{display:flex;position:relative;align-items:center;justify-content:center;flex-direction:column;border-left:1px solid var(--line);color:var(--blue);padding:10px 28px;min-width:0;line-height:1.5}
-.support-dock a>span:not(.arrow){font-size:20px;font-weight:600;letter-spacing:.1em;white-space:nowrap}
-.support-dock a small{font:500 11px 'Barlow Condensed',sans-serif;letter-spacing:.1em;margin-top:4px;white-space:nowrap}
-.support-dock .arrow{position:absolute;right:18px;font-size:20px}
-.support-dock a:nth-child(2){background:var(--sky)}
-.support-dock a:last-child{color:white;background:var(--blue);border-color:var(--blue)}
-.support-dock a:hover{background:#dceffa}
-.support-dock a:last-child:hover{background:var(--navy)}
-.menu-open .support-dock{visibility:hidden}
-@media(max-width:1150px){.support-dock>p{padding-inline:30px;font-size:12px}.sketch-about-grid{gap:40px}.sketch-about-copy h3{font-size:27px}}
+@media(max-width:1150px){.sketch-about-grid{gap:40px}.sketch-about-copy h3{font-size:27px}}
 @media(max-width:900px){
  .sketch-header .header-main{height:84px;padding:10px 22px}
  .sketch-header .header-sub{display:none}
  .sketch-header .menu-toggle{position:absolute;right:17px;top:0;bottom:0}
  .sketch-layout .mobile-nav{top:84px;bottom:0;max-height:calc(100dvh - 84px)}
  .film-hero{height:clamp(360px,62vw,520px)}
- .support-dock>p{display:none}.support-dock nav{width:100%;max-width:none}
  .sketch-about-grid{gap:30px;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
  .sketch-about-copy h3{font-size:25px}
  .sketch-about-copy p{font-size:13px}
 }
 @media(max-width:600px){
- .sketch-layout{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
  .sketch-header .header-main{height:78px;padding:10px 20px}
  .sketch-layout .mobile-nav{top:78px;max-height:calc(100dvh - 78px)}
  .film-hero{height:420px;height:min(62svh,480px);min-height:310px}
  .film-hero-video{object-position:50% 50%}
- .film-control{right:16px;bottom:16px;min-width:100px;font-size:11px;gap:8px;padding:9px 12px}
  .sketch-layout .sponsor-strip{padding-block:16px}
  .sketch-layout .sponsor-strip h2{font-size:11px;margin-bottom:10px}
  .sketch-about{padding-block:45px 50px}
@@ -148,9 +128,6 @@ html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
  .sketch-shelter{padding-block:38px 25px;margin-bottom:50px}
  .sketch-shelter .legacy-animal-track>a{width:240px}.sketch-shelter .legacy-animal-track{gap:20px}
  .animal-controls{gap:10px}.animal-controls p{font-size:10px;letter-spacing:0}
- .support-dock{height:calc(64px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px)}
- .support-dock a{padding:8px 4px}.support-dock a>span:not(.arrow){font-size:16px;letter-spacing:.06em}
- .support-dock a small{font-size:9px;letter-spacing:.03em}.support-dock .arrow{display:none}
 }
 
 /* The source homepage's content sequence and visual layout. */
@@ -223,7 +200,6 @@ html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
 .renew-hero-media{height:430px;position:relative;border:12px solid white;box-shadow:0 24px 55px #003f7430;background:#e8edf0}
 .renew-hero-media:before{content:'';position:absolute;inset:-27px 22px 22px -27px;border:1px solid #a7c9de;z-index:0;pointer-events:none}
 .renew-hero-media video{position:relative;z-index:1;object-position:50% 50%}
-.renew-hero-media .film-control{z-index:2;right:18px;bottom:18px}
 .renew-hero-bottom{height:38px;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;border-top:1px solid #d2e4f0;font:600 10px 'Barlow Condensed',sans-serif;letter-spacing:.14em;color:var(--blue)}
 .sketch-layout:has(.renew-hero) .sponsor-strip{background:#fff;padding:23px 0 25px}
 .sketch-layout:has(.renew-hero) .sponsor-strip h2{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:13px}
@@ -277,8 +253,6 @@ html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
 .renew-support-grid strong{font-size:22px;margin-top:17px;line-height:1.4;color:var(--navy)}
 .renew-support-grid small{font-size:12px;margin-top:5px;color:var(--ink)}
 .renew-support-grid b{position:absolute;right:20px;bottom:20px;color:var(--blue);font-weight:400;font-size:20px}
-.support-dock nav{grid-template-columns:repeat(4,minmax(0,1fr));width:75%}
-.support-dock a>span:not(.arrow){font-size:18px}
 .donation-box-section{border-top:1px solid var(--line)}
 .donation-box-section p{max-width:700px;margin:22px 0 30px}
 @media(prefers-reduced-motion:no-preference){
@@ -301,7 +275,6 @@ html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
  .renew-activity-body h3{font-size:19px}
  .renew-activity-body p{font-size:12px}
  .renew-support-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .support-dock nav{width:100%}
 }
 @media(max-width:600px){
  .renew-container{width:calc(100% - 44px)}
@@ -337,8 +310,6 @@ html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
  .renew-support-grid strong{font-size:18px}
  .renew-support-grid small{font-size:10px}
  .renew-support-grid b{right:12px;bottom:10px;font-size:16px}
- .support-dock a>span:not(.arrow){font-size:14px}
- .support-dock a small{font-size:8px;letter-spacing:0}
 }
 
 /* Preserve the requested three-item row above the six-item navigation. */
@@ -369,7 +340,6 @@ html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
 .renew-hero-copy{max-width:690px}
 .renew-hero-copy h1{font-size:clamp(38px,4.05vw,62px);font-weight:700;color:#00468b}
 .renew-hero-copy p{color:#183c59;font-weight:500}
-.renew-hero .film-control{z-index:3;bottom:110px}
 .renew-hero-bottom{position:absolute;left:0;right:0;bottom:0;z-index:2;background:#ffffffd9;color:var(--navy);border-top-color:#fff}
 
 /* The support choices sit over a photograph with a dark readability layer. */
@@ -390,7 +360,6 @@ html:has(.sketch-layout){scroll-padding-top:24px;scroll-padding-bottom:110px}
  .renew-hero-inner{height:100%;display:block;padding-top:50px;padding-bottom:100px}
  .renew-hero-copy h1{font-size:clamp(26px,7.1vw,35px)}
  .renew-hero-copy p{font-size:13px}
- .renew-hero .film-control{right:17px;bottom:95px}
  .renew-support{background-position:55% center}
  .renew-support:before{background:rgba(6,39,72,.73)}
 }
