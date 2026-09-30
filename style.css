@@ -202,15 +202,15 @@ html:has(.sketch-layout){scroll-padding-top:24px}
 .renew-hero-media:before{content:'';position:absolute;inset:-27px 22px 22px -27px;border:1px solid #a7c9de;z-index:0;pointer-events:none}
 .renew-hero-media video{position:relative;z-index:1;object-position:50% 50%}
 .renew-hero-bottom{height:38px;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;border-top:1px solid #d2e4f0;font:600 10px 'Barlow Condensed',sans-serif;letter-spacing:.14em;color:var(--blue)}
-.sketch-layout:has(.renew-hero) .sponsor-strip{background:#eaf6ff;padding:23px 0 25px}
+.sketch-layout:has(.renew-hero) .sponsor-strip{background:#fff;padding:23px 0 25px}
 .sketch-layout:has(.renew-hero) .sponsor-strip h2{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:13px}
 .renew-section{padding-block:110px;color:var(--navy)}
 .renew-section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:42px}
 .renew-section-head h2,.renew-about h2,.renew-sponsor-call h2{font-size:clamp(30px,3vw,43px);font-weight:600;line-height:1.45;letter-spacing:.05em;margin-top:8px}
 .renew-section-head>p{font-size:14px;color:var(--ink)}
 .renew-section .link-arrow{color:var(--blue);border-color:#8cb9d8;font-size:14px}
-.renew-news{background:#eaf6ff}
-.renew-news-list{border-top:1px solid #abcadd}
+.renew-news{background:#fff;border-bottom:1px solid #dce8ef}
+.renew-news-list{border-top:2px solid var(--blue)}
 .renew-news-list a{min-height:84px;display:grid;grid-template-columns:105px 72px minmax(0,1fr) 20px;gap:26px;align-items:center;border-bottom:1px solid #d6e6f0;padding:18px 8px;transition:background .25s,color .25s}
 .renew-news-list a:hover{background:#f3f9fd;color:var(--blue)}
 .renew-news-list time{font:500 13px Arial,sans-serif;white-space:nowrap}
@@ -226,7 +226,7 @@ html:has(.sketch-layout){scroll-padding-top:24px}
 .renew-about-copy p{font-size:15px;line-height:2.15;color:var(--ink);max-width:530px;margin-bottom:24px}
 .renew-about-copy .renew-about-lead{font-size:23px;font-weight:600;color:var(--blue);line-height:1.6}
 .renew-about-copy .link-arrow{margin-top:17px}
-.renew-activities{background:#eaf6ff}
+.renew-activities{background:#f7f9fa}
 .renew-activity-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
 .renew-activity-card{border:1px solid #d8e7f0;background:#fff;min-width:0}
 .renew-activity-image{height:230px;overflow:hidden;background:#eaf3f8}
@@ -237,12 +237,12 @@ html:has(.sketch-layout){scroll-padding-top:24px}
 .renew-activity-body h3{font-size:24px;font-weight:600;margin:11px 0 13px}
 .renew-activity-body p{font-size:14px;line-height:2;color:var(--ink)}
 .renew-activities-more{text-align:right;margin-top:35px}
-.renew-sponsor-call{background:#00408c;color:#fff;overflow:hidden}
+.renew-sponsor-call{background:#fff;color:var(--navy);overflow:hidden}
 .renew-sponsor-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.96fr);align-items:center;gap:clamp(48px,7vw,100px)}
-.renew-sponsor-grid>div:first-child{min-width:0}
+.renew-sponsor-grid>div:first-child{min-width:0;border-left:4px solid var(--blue);padding-left:clamp(22px,3vw,42px)}
 .renew-sponsor-call h2{margin-bottom:26px}
-.renew-sponsor-call p{font-size:15px;line-height:2.1;color:#fff;margin-bottom:25px}
-.renew-sponsor-call .renew-sponsor-lead{font-size:23px;font-weight:600;color:#fff;line-height:1.6}
+.renew-sponsor-call p{font-size:15px;line-height:2.1;color:var(--ink);margin-bottom:25px}
+.renew-sponsor-call .renew-sponsor-lead{font-size:23px;font-weight:600;color:var(--blue);line-height:1.6}
 .renew-sponsor-call .link-arrow{margin-top:12px}
 .renew-sponsor-image{height:415px;overflow:hidden;background:#dcecf6}
 .renew-sponsor-image img{height:100%;object-fit:cover}
@@ -334,17 +334,17 @@ html:has(.sketch-layout){scroll-padding-top:24px}
 }
 
 /* The full-frame film carries one handwritten message at its centre. */
-.renew-hero{height:clamp(620px,calc(100svh - 276px),780px);min-height:0;background:#00408c}
+.renew-hero{height:clamp(620px,calc(100svh - 276px),780px);min-height:0;background:#d5d4cf}
 .renew-hero-video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;z-index:0}
-.renew-hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,48,106,.57),rgba(0,64,140,.42) 52%,rgba(0,48,106,.57));pointer-events:none}
+.renew-hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(28,30,32,.36),rgba(28,30,32,.52) 50%,rgba(28,30,32,.36));pointer-events:none}
 .renew-hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;min-height:0;height:100%;padding-block:40px;text-align:center}
 .renew-hero-copy{width:100%;max-width:none}
 .renew-hero-copy h1{font-family:'Yomogi','UD Digi Kyokasho NP-R',sans-serif;font-size:clamp(42px,5.3vw,78px);font-weight:400;line-height:1.6;letter-spacing:.055em;color:#fff;text-shadow:0 3px 18px rgba(0,28,66,.8),0 1px 3px rgba(0,28,66,.9)}
 .renew-hero-copy h1 span:first-child{transform:rotate(-1.4deg)}
 .renew-hero-copy h1 span:last-child{transform:rotate(.7deg)}
-.renew-sponsor-call .renew-en,.renew-sponsor-call h2,.renew-sponsor-call .link-arrow{color:#fff}
-.renew-sponsor-call .link-arrow{border-color:rgba(255,255,255,.8)}
-.sponsor-bottom{background:#eaf6ff}
+.renew-sponsor-call .renew-en,.renew-sponsor-call .link-arrow{color:var(--blue)}
+.renew-sponsor-call .link-arrow{border-color:#8cb9d8}
+.sponsor-bottom{background:#fff;border-top:2px solid var(--blue)}
 
 /* The support choices sit over a photograph with a dark readability layer. */
 .renew-support{position:relative;isolation:isolate;background:#173b59 url('assets/vision.webp') center 42%/cover no-repeat;color:#fff}
@@ -360,7 +360,7 @@ html:has(.sketch-layout){scroll-padding-top:24px}
 @media(max-width:600px){
  .renew-hero{height:clamp(590px,calc(100svh - 78px),780px)}
  .renew-hero-video{object-position:50% 56%}
- .renew-hero-shade{background:rgba(0,55,121,.61)}
+ .renew-hero-shade{background:rgba(28,30,32,.5)}
  .renew-hero-inner{height:100%;display:flex;align-items:center;justify-content:center;padding:30px 0}
  .renew-hero-copy h1{font-size:clamp(26px,7.1vw,38px);letter-spacing:.015em}
  .renew-support{background-position:55% center}
