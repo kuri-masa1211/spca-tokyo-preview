@@ -203,7 +203,7 @@ html:has(.sketch-layout){scroll-padding-top:24px}
 .renew-hero-media:before{content:'';position:absolute;inset:-27px 22px 22px -27px;border:1px solid #a7c9de;z-index:0;pointer-events:none}
 .renew-hero-media video{position:relative;z-index:1;object-position:50% 50%}
 .renew-hero-bottom{height:38px;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;border-top:1px solid #d2e4f0;font:600 10px 'Barlow Condensed',sans-serif;letter-spacing:.14em;color:var(--blue)}
-.sketch-layout:has(.renew-hero) .sponsor-strip{background:#fff;padding:23px 0 25px}
+.sketch-layout:has(.renew-hero) .sponsor-strip{background:#fff;padding:16px 0}
 .sketch-layout:has(.renew-hero) .sponsor-strip h2{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:13px}
 .renew-section{padding-block:110px;color:var(--navy)}
 .renew-section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:42px}
