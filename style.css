@@ -314,25 +314,31 @@ html:has(.sketch-layout){scroll-padding-top:24px}
  .renew-support-grid b{right:12px;bottom:10px;font-size:16px}
 }
 
-/* Preserve the requested three-item row above the six-item navigation. */
+/* Supplied SPCA Tokyo art is displayed unaltered and cropped only in CSS. */
+.brand-art{display:block;width:290px;aspect-ratio:5.45;background:#fff url('assets/spca-tokyo-logo-original.png') center/137% auto no-repeat;flex:none}
+.footer .brand-art{width:245px}
+/* The supplied sketch places the logo and four short links above six equal navigation cells. */
 @media(min-width:901px){
- .sketch-header{display:grid;grid-template-rows:100px 100px 76px}
- .sketch-header .header-main{grid-row:1;height:100px;justify-content:center;padding:10px var(--gutter)}
- .sketch-header .brand{justify-content:center}
- .sketch-header .primary-nav{grid-row:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:100px;min-width:0;margin:0;border-top:1px solid var(--line)}
- .sketch-header .primary-nav a{min-width:0;min-height:0;justify-content:center;text-align:center;font-size:clamp(21px,2vw,31px);padding:10px 30px}
- .sketch-header .primary-nav a:first-child{border-left:0}
- .sketch-header .primary-nav a>span{white-space:nowrap}
- .sketch-header .primary-nav a small{margin-top:6px;font-size:clamp(11px,.95vw,14px)}
- .sketch-header .header-sub{grid-row:3;height:76px}
- .sketch-header .secondary-nav a{font-size:clamp(12px,1.25vw,21px)}
- .sketch-header .secondary-nav a small{font-size:clamp(11px,1.15vw,18px)}
+ .sketch-header{display:block;border-bottom:1px solid var(--line)}
+ .sketch-header .header-main{display:flex;align-items:center;justify-content:space-between;height:106px;padding:0 clamp(24px,4.5vw,72px);border:0}
+ .sketch-header .brand{padding:0;justify-content:flex-start;flex:none}
+ .sketch-header .primary-nav{display:flex;align-items:center;gap:clamp(18px,2.5vw,42px);height:auto;min-width:0;margin:0 0 0 auto;border:0}
+ .sketch-header .primary-nav a{display:inline-block;min-width:0;min-height:0;padding:12px 0;border:0;background:transparent;color:var(--navy);font-size:clamp(15px,1.3vw,20px);font-weight:600;line-height:1.5;white-space:nowrap}
+ .sketch-header .primary-nav a:last-child{background:transparent;color:var(--navy)}
+ .sketch-header .primary-nav a:hover,.sketch-header .primary-nav a[aria-current=page]{background:transparent;color:var(--blue);text-decoration:underline;text-underline-offset:8px}
+ .sketch-header .header-sub{display:block;height:72px;padding:0;border-top:1px solid var(--line);border-bottom:0}
+ .sketch-header .secondary-nav{height:100%;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;color:var(--navy)}
+ .sketch-header .secondary-nav a{display:flex;align-items:center;justify-content:center;min-width:0;padding:10px 5px;border-left:1px solid var(--line);font-size:clamp(13px,1.26vw,18px);font-weight:500;line-height:1.4;white-space:nowrap}
+ .sketch-header .secondary-nav a:first-child{border-left:0}
+ .sketch-header .secondary-nav a:hover,.sketch-header .secondary-nav a[aria-current=page]{background:var(--sky);color:var(--blue);text-decoration:none}
 }
 @media(max-width:900px){
  .sketch-header{display:block}
- .sketch-header .header-main{justify-content:center}
+ .sketch-header .header-main{justify-content:flex-start}
+ .sketch-header .brand-art{width:min(240px,calc(100vw - 125px))}
  .sketch-header .primary-nav{display:none}
 }
+@media(max-width:600px){.sketch-header .brand-art{width:min(215px,calc(100vw - 112px))}}
 
 /* Japanese vertical bands and handwritten English follow the supplied first-view image. */
 .renew-hero{height:clamp(700px,55vw,850px);min-height:0;background:#dceced;overflow:hidden}
