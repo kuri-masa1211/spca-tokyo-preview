@@ -45,12 +45,12 @@ if(donationPicker){
    next.removeAttribute('aria-disabled');
    custom.removeAttribute('aria-invalid');
   };
-  buttons.forEach(button=>button.addEventListener('click',()=>{buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));custom.value='';update(Number(button.dataset.amount));}));
+  buttons.forEach(button=>button.addEventListener('click',()=>{buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));custom.value=button.dataset.amount;update(Number(button.dataset.amount));}));
   custom.addEventListener('input',()=>{
    const amount=Number(custom.value);
-   if(custom.value!==''&&Number.isInteger(amount)&&amount>0&&amount<=99999999){buttons.forEach(item=>item.setAttribute('aria-pressed','false'));update(amount);}
+   if(custom.value!==''&&Number.isInteger(amount)&&amount>0&&amount<=99999999){buttons.forEach(item=>item.setAttribute('aria-pressed',String(Number(item.dataset.amount)===amount)));update(amount);}
    else if(custom.value!==''){summary.textContent='金額を確認してください';custom.setAttribute('aria-invalid','true');next.removeAttribute('href');next.setAttribute('aria-disabled','true');}
-   else {const selected=buttons.find(button=>button.getAttribute('aria-pressed')==='true')||buttons.find(button=>button.dataset.amount==='3000')||buttons[0];selected.setAttribute('aria-pressed','true');update(Number(selected.dataset.amount));}
+   else {const selected=buttons.find(button=>button.dataset.amount==='5000')||buttons[0];buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===selected)));update(Number(selected.dataset.amount));}
   });
  }
 }
