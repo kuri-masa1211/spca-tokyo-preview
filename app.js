@@ -21,6 +21,50 @@ document.querySelectorAll('[data-filter-group]').forEach(group=>{
   if(message)message.textContent=`${button.textContent.trim()}：${count}件`;
  }));
 });
+const donationPicker=document.querySelector('[data-donation-picker]');
+if(donationPicker){
+ const tabs=[...donationPicker.querySelectorAll('[role="tab"]')];
+ const panels=tabs.map(tab=>document.getElementById(tab.getAttribute('aria-controls')));
+ const activate=index=>{tabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;panels[i].hidden=i!==index;});};
+ tabs.forEach((tab,i)=>{
+  tab.addEventListener('click',()=>activate(i));
+  tab.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();const next=(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;activate(next);tabs[next].focus();}});
+ });
+ for(const panel of panels){
+  const buttons=[...panel.querySelectorAll('[data-amount]')];
+  const custom=panel.querySelector('input');
+  const summary=panel.querySelector('[data-donation-summary]');
+  const next=panel.querySelector('[data-donation-next]');
+  const label=panel.dataset.frequency==='monthly'?'毎月':'今回のみ';
+  const target=new URL(next.href);
+  const update=amount=>{
+   summary.textContent=`${label} ${amount.toLocaleString('ja-JP')}円`;
+   target.searchParams.set('support',panel.dataset.frequency);
+   target.searchParams.set('amount',String(amount));
+   next.href=target.toString();
+   next.removeAttribute('aria-disabled');
+   custom.removeAttribute('aria-invalid');
+  };
+  buttons.forEach(button=>button.addEventListener('click',()=>{buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));custom.value='';update(Number(button.dataset.amount));}));
+  custom.addEventListener('input',()=>{
+   const amount=Number(custom.value);
+   if(custom.value!==''&&Number.isInteger(amount)&&amount>0&&amount<=99999999){buttons.forEach(item=>item.setAttribute('aria-pressed','false'));update(amount);}
+   else if(custom.value!==''){summary.textContent='金額を確認してください';custom.setAttribute('aria-invalid','true');next.removeAttribute('href');next.setAttribute('aria-disabled','true');}
+   else {const selected=buttons.find(button=>button.getAttribute('aria-pressed')==='true')||buttons.find(button=>button.dataset.amount==='3000')||buttons[0];selected.setAttribute('aria-pressed','true');update(Number(selected.dataset.amount));}
+  });
+ }
+}
+const donationParams=new URLSearchParams(location.search);
+if(location.pathname.endsWith('/contact/')&&['monthly','once'].includes(donationParams.get('support'))){
+ const amount=Number(donationParams.get('amount'));
+ const contactOptions=document.querySelector('.contact-options');
+ if(Number.isInteger(amount)&&amount>0&&amount<=99999999&&contactOptions){
+  const box=document.createElement('div');box.className='notice donation-intent';
+  const title=document.createElement('strong');title.textContent='寄付についてのご相談内容（確認用）';
+  const copy=document.createElement('p');copy.textContent=`${donationParams.get('support')==='monthly'?'毎月':'今回のみ'} ${amount.toLocaleString('ja-JP')}円の寄付をご検討中です。お問い合わせフォームの本文にこの内容をご記入ください。`;
+  box.append(title,copy);contactOptions.before(box);
+ }
+}
 // Fit deliberately unbroken short display headings to their container, including narrow phones.
 function fitLines(){document.querySelectorAll('.line-word,[data-fit]').forEach(el=>{el.style.fontSize='';const base=parseFloat(getComputedStyle(el).fontSize);const room=el.parentElement.clientWidth;const range=document.createRange();range.selectNodeContents(el);const width=range.getBoundingClientRect().width;if(width>room)el.style.fontSize=`${Math.max(18,base*room/width*.98)}px`;});}
 document.fonts.ready.then(fitLines);window.addEventListener('resize',fitLines);

@@ -332,6 +332,122 @@ html:has(.sketch-layout){scroll-padding-top:24px}
 }
 @media(max-width:600px){.sketch-header .brand-art{width:min(215px,calc(100vw - 112px))}}
 
+/* Donation landing page: an informational preview until SPCA Tokyo confirms payments. */
+.donation-page{color:var(--navy)}
+.donation-container{width:min(1120px,calc(100% - 80px));margin-inline:auto}
+.donation-page .eyebrow{color:var(--blue)}
+.donation-hero{padding:68px 0 90px;text-align:center;background:linear-gradient(180deg,#fff 0%,#f8fbfd 100%);border-bottom:1px solid var(--line)}
+.donation-hero h1{font-size:clamp(30px,4.5vw,58px);font-weight:600;line-height:1.45;letter-spacing:.035em}
+.donation-hero h1 span{white-space:nowrap}
+.donation-hero p{margin:24px auto 0;max-width:750px;font-size:16px;line-height:2}
+.donation-jump{display:inline-flex;align-items:center;justify-content:center;gap:28px;margin-top:35px;padding:16px 30px;border:1px solid var(--blue);color:var(--blue);font-size:15px;font-weight:600;transition:background .2s,color .2s}
+.donation-jump:hover{background:var(--blue);color:#fff}
+.donation-intro{padding:100px 0}
+.donation-intro-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:clamp(48px,6vw,95px)}
+.donation-intro-image{min-height:420px;background:var(--sky);overflow:hidden}
+.donation-intro-image img{height:420px;object-fit:cover}
+.donation-intro-copy h2,.donation-transparency h2{font-size:clamp(30px,3.3vw,44px);line-height:1.6;margin:8px 0 25px;font-weight:600}
+.donation-intro-copy p,.donation-transparency p{font-size:15px;line-height:2.1;margin:0 0 20px}
+.donation-choice{padding:95px 0 110px;background:#eef7fc;scroll-margin-top:25px}
+.donation-section-heading{text-align:center;margin-bottom:40px}
+.donation-section-heading h2{font-size:clamp(29px,3.5vw,43px);line-height:1.45;margin:8px 0 18px;font-weight:600}
+.donation-section-heading>p{font-size:15px;line-height:1.9}
+.donation-picker{max-width:840px;margin:auto;background:#fff;border:1px solid #c9dce8}
+.donation-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #c9dce8}
+.donation-tabs button{padding:22px 12px;border:0;border-right:1px solid #c9dce8;background:#e1eff7;color:var(--navy);font:600 20px 'Noto Sans JP',sans-serif;cursor:pointer}
+.donation-tabs button:last-child{border-right:0}
+.donation-tabs button[aria-selected=true]{background:#fff;color:var(--blue);box-shadow:inset 0 4px var(--blue)}
+.donation-tabs button:focus-visible,.donation-amount:focus-visible,.donation-custom input:focus-visible,.donation-next:focus-visible{outline:3px solid #ffb64a;outline-offset:2px}
+.donation-panel{padding:42px 46px 36px}
+.donation-panel[hidden]{display:none}
+.donation-panel-lead{font-size:15px;line-height:1.8;margin:0 0 27px}
+.donation-amounts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.donation-amount{min-height:74px;padding:12px;border:1px solid #bed4e2;background:#fff;color:var(--navy);font:600 clamp(18px,2vw,25px) 'Noto Sans JP',sans-serif;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.donation-amount span{font-size:.65em;margin-left:4px}
+.donation-amount:hover{border-color:var(--blue);background:#f3f9fd}
+.donation-amount[aria-pressed=true],.donation-amount[aria-pressed=true]:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.donation-custom-label{display:block;margin-top:31px;margin-bottom:9px;font-size:13px;font-weight:600}
+.donation-custom{display:flex;align-items:center;max-width:420px;border:1px solid #bed4e2;background:#fff}
+.donation-custom input{width:100%;min-width:0;border:0;padding:15px 17px;color:var(--navy);font:600 20px 'Noto Sans JP',sans-serif;appearance:textfield}
+.donation-custom input::-webkit-inner-spin-button,.donation-custom input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.donation-custom span{padding-right:18px;font-weight:600}
+.donation-panel-bottom{display:flex;align-items:center;justify-content:space-between;gap:25px;margin-top:32px;padding-top:28px;border-top:1px solid #dbe8ef}
+.donation-panel-bottom p{font-size:13px;line-height:1.8}
+.donation-panel-bottom strong{display:block;font-size:21px;color:var(--blue)}
+.donation-next{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-width:242px;padding:19px 23px;background:var(--blue);color:#fff;font-size:15px;font-weight:600}
+.donation-next:hover{background:var(--navy)}
+.donation-draft-note{padding:0 46px 35px;color:#38556c;font-size:12px;line-height:1.8}
+.donation-impact{padding:105px 0 110px}
+.donation-impact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.donation-impact-card{border:1px solid #d4e3ec;min-width:0;background:#fff}
+.donation-impact-photo{height:220px;overflow:hidden;background:var(--sky)}
+.donation-impact-photo img{height:100%;object-fit:cover}
+.donation-impact-body{padding:27px 27px 34px}
+.donation-impact-body>span,.donation-other-card>span{font:600 16px 'Barlow Condensed',sans-serif;letter-spacing:.1em;color:var(--blue)}
+.donation-impact-body h3{font-size:23px;margin:11px 0 13px}
+.donation-impact-body p{font-size:14px;line-height:2}
+.donation-transparency{padding:80px 0;background:#eaf4fa}
+.donation-transparency-grid{display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;gap:80px}
+.donation-transparency h2{margin-bottom:0}
+.donation-text-link{display:inline-flex;gap:30px;align-items:center;margin-top:8px;padding-bottom:8px;border-bottom:1px solid var(--blue);color:var(--blue);font-weight:600}
+.donation-other{padding:100px 0}
+.donation-other-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.donation-other-card{position:relative;display:block;min-height:220px;padding:30px 75px 30px 32px;border:1px solid #bfd7e5;transition:background .2s,border-color .2s}
+.donation-other-card:hover{background:#f4f9fc;border-color:var(--blue)}
+.donation-other-card h3{font-size:24px;margin:22px 0 12px}
+.donation-other-card p{font-size:14px;line-height:1.9}
+.donation-other-card b{position:absolute;right:30px;bottom:27px;color:var(--blue);font-size:24px;font-weight:400}
+.donation-faq{padding:92px 0 105px;background:#f8fbfd}
+.donation-faq .faq{max-width:860px;margin:auto;border-top:1px solid var(--line)}
+.donation-intent{margin-top:35px}
+.donation-intent[hidden]{display:none}
+.donation-intent strong{color:var(--blue)}
+@media(max-width:850px){
+ .donation-intro-grid{gap:35px}
+ .donation-intro-image,.donation-intro-image img{height:340px;min-height:0}
+ .donation-transparency-grid{gap:35px}
+ .donation-impact-grid{gap:12px}
+ .donation-impact-body{padding:22px}
+}
+@media(max-width:600px){
+ .donation-container{width:calc(100% - 44px)}
+ .donation-hero{padding:45px 0 60px}
+ .donation-hero h1{font-size:clamp(26px,7.8vw,34px)}
+ .donation-hero h1 span{display:block}
+ .donation-hero p{font-size:13px;margin-top:20px}
+ .donation-hero p br{display:none}
+ .donation-jump{width:100%;font-size:13px}
+ .donation-intro{padding:65px 0}
+ .donation-intro-grid,.donation-transparency-grid{grid-template-columns:1fr;gap:28px}
+ .donation-intro-image,.donation-intro-image img{height:265px}
+ .donation-intro-copy h2,.donation-transparency h2{font-size:29px;margin-bottom:18px}
+ .donation-intro-copy p,.donation-transparency p{font-size:13px}
+ .donation-choice,.donation-impact,.donation-other,.donation-faq{padding:70px 0}
+ .donation-section-heading{margin-bottom:28px}
+ .donation-section-heading h2{font-size:29px}
+ .donation-section-heading>p{font-size:13px}
+ .donation-tabs button{font-size:15px;padding:17px 5px}
+ .donation-panel{padding:25px 18px 26px}
+ .donation-panel-lead{font-size:13px;margin-bottom:19px}
+ .donation-amounts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .donation-amount{min-height:60px;font-size:17px}
+ .donation-custom-label{margin-top:24px}
+ .donation-custom input{font-size:17px}
+ .donation-panel-bottom{display:block;margin-top:25px;padding-top:22px}
+ .donation-panel-bottom strong{font-size:19px}
+ .donation-next{width:100%;margin-top:18px;font-size:13px}
+ .donation-draft-note{padding:0 18px 26px;font-size:11px}
+ .donation-impact-grid,.donation-other-grid{grid-template-columns:1fr;gap:18px}
+ .donation-impact-photo{height:210px}
+ .donation-impact-body{padding:21px 22px 27px}
+ .donation-impact-body h3{font-size:22px}
+ .donation-impact-body p,.donation-other-card p{font-size:13px}
+ .donation-transparency{padding:62px 0}
+ .donation-other-card{min-height:190px;padding:25px 65px 25px 22px}
+ .donation-other-card h3{font-size:22px}
+ .donation-faq .faq summary{font-size:13px}
+}
+
 /* Japanese vertical bands and handwritten English follow the supplied first-view image. */
 .renew-hero{height:clamp(700px,55vw,850px);min-height:0;background:#dceced;overflow:hidden}
 .renew-hero-video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;z-index:0}
